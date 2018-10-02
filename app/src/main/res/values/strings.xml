@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">HEMAapp</string>
+    <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id vehicula lacus, non tempor magna. Proin ac aliquet leo. Vivamus iaculis porta blandit. Etiam pharetra nibh odio, eu tempus est egestas vel. Integer eu varius turpis, lobortis porta nibh. Nunc ultrices, lectus et sodales sodales, lorem magna auctor ex, non aliquam turpis felis convallis massa. Nullam quam est, facilisis sed pellentesque non, facilisis sed libero.</string>
+    <string name="fechtbuch">Fechtbuch</string>
+    <string name="contribute">Contribute!</string>
+    <string name="quiz">Quiz</string>
+    <string name="allgemeine_hema_grundlagen">Allgemeine HEMA Grundlagen</string>
+    <string name="ToastRightAnswer">Richtig, sehr gut!</string>
+    <string name="ToastWrongAnswer">Leider falsch...</string>
+    <string name="AlertDialogWrongAnswerTitle">Falsche Antwort</string>
+    <string name="AlertDialogButton">Weiter geht\'s!</string>
+    <string name="AlertDialogAllgemGrundAbgeschlossen">Allgemeine Grundlagen abgeschlossen!</string>
+
+</resources>

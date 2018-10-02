@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true" />
+
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <Button
+            android:id="@+id/b_GrundlagenAllgemein"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/allgemeine_hema_grundlagen"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/b_Huten"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Schwert und Buckler Huten"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/b_GrundlagenSpeziell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Spezielle Schwert und Buckler Grundlagen"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/b_TechnikFortgeschritten"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fortgeschrittenes Wissen und Techniken"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="weapon">
+        <item>Schwert &amp; Buckler</item>
+        <item>Langes Schwert</item>
+    </string-array>
+
+    <!-- Questions: Allgemeine Grundlagen -->
+    <string-array name="allgemGrundQuestions">
+        <item>Welcher Teil der Klinge wird als Stärke bezeichnet?</item>
+        <item>Was versteht man unter fechten aus dem Band bzw. aus der Bindung?</item>
+        <item>Was gilt es beim fechten mit einem Waster (Nylon Trainingsschwert) zu bedenken?</item>
+        <item>Question4</item>
+        <item>Question5</item>
+    </string-array>
+
+    <!-- Answers: Allgemeine Grundlagen -->
+    <string-array name="allgemGrundAnswers">
+        <!-- Frage1 -->
+        <item>Die untere Hälfte der Klinge.</item>
+        <item>Die obere Hälfte der Klinge.</item>
+        <item>Die Spitze der Klinge.</item>
+        <!-- Frage2 -->
+        <item>Answer_Q2_A1.</item>
+        <item>Answer_Q2_A2</item>
+        <item>Answer_Q2_A3</item>
+        <!-- Frage3 -->
+        <item>Answer_Q3_A1</item>
+        <item>Answer_Q3_A2</item>
+        <item>Answer_Q3_A3</item>
+        <!-- Frage4 -->
+        <item>Answer_Q4_A1</item>
+        <item>Answer_Q4_A2</item>
+        <item>Answer_Q4_A3</item>
+        <!-- Frage5 -->
+        <item>Answer_Q5_A1</item>
+        <item>Answer_Q5_A2</item>
+        <item>Answer_Q5_A3</item>
+    </string-array>
+
+    <!-- Richtige Antworten für den Alert-Dialog, wenn die falsche ausgewählt wird -->
+    <string-array name="AllgemGrund_rightAnswers">
+        <item>Das ist leider nicht richtig... Als Stärke wird die untere Hälfte der Klinge bezeichnet, da man hier durch einen geringeren Hebel mehr Kraft aufnehmen kann.</item>
+        <item>Das ist leider nicht richtig... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat nibh at ligula iaculis rhoncus. Integer consequat quam mi, vel hendrerit est tempor pretium. </item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat nibh at ligula iaculis rhoncus. Integer consequat quam mi, vel hendrerit est tempor pretium. </item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat nibh at ligula iaculis rhoncus. Integer consequat quam mi, vel hendrerit est tempor pretium. </item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat nibh at ligula iaculis rhoncus. Integer consequat quam mi, vel hendrerit est tempor pretium. </item>
+    </string-array>
+
+
+</resources>
