@@ -45,6 +45,15 @@ public class QuizOverview extends AppCompatActivity {
             }
         });
 
+        b_Huten.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), quiz_SB_allgemGrundlagen.class);
+                finish();
+                startActivity(intent);
+            }
+        });
+
 
     }
 

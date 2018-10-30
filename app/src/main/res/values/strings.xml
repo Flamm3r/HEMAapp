@@ -10,5 +10,6 @@
     <string name="AlertDialogWrongAnswerTitle">Falsche Antwort</string>
     <string name="AlertDialogButton">Weiter geht\'s!</string>
     <string name="AlertDialogAllgemGrundAbgeschlossen">Allgemeine Grundlagen abgeschlossen!</string>
+    <string name="title_activity_huten__sb_allgem_grundlagen">huten_SB_allgemGrundlagen</string>
 
 </resources>

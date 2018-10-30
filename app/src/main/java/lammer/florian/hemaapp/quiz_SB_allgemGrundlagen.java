@@ -2,6 +2,7 @@ package lammer.florian.hemaapp;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,7 +23,9 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
     private int progress = 0;   //Tracks the actual Progress in % for the Progressbar
     private int frageNr = 0;    //Tracks the actual Questionnumber
     private int punkte = 0;     //Tracks the number of right questions
-    private int[] array_rightAnsw = {1,1,3,2,3}; //Array für die richtigen Antworten --> Wert gibt die richtige Antwort nach Reihenfolge im XML Array pro Frage an
+    private int[] array_rightAnsw = {1,1,3,2,3,2,1,3}; //Array für die richtigen Antworten --> Wert gibt die richtige Antwort nach Reihenfolge im XML Array pro Frage an
+    private String[] titleArray;     //Array für die Titel der Fragen
+    final private int[] imageArray = {0, R.drawable.guard_1st, R.drawable.guard_2nd, R.drawable.guard_3nd, R.drawable.guard_4th, R.drawable.guard_5th, R.drawable.guard_6th, R.drawable.guard_7th}; //, R.drawable., R.drawable.dice3, R.drawable.dice4, R.drawable.dice5, R.drawable.dice6};   //Array für die Bilder zu den Fragen
     private String[] fragen;    //Initialisierung eines Arrays für die Fragen aus dem XML
     private String[] antworten; //Initialisierung eines Array für die Antworten aus dem XML
     private boolean init = false;
@@ -31,12 +35,16 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz_sb_allgemgrundlagen);
 
+        final TextView title = (TextView) findViewById(R.id.q_title);
+        final ImageView image = (ImageView) findViewById(R.id.q_imageView);
         final TextView question = (TextView) findViewById(R.id.q_textView);
         final Button b_a1 = (Button) findViewById(R.id.b_a1);
         final Button b_a2 = (Button) findViewById(R.id.b_a2);
         final Button b_a3 = (Button) findViewById(R.id.b_a3);
         final ProgressBar pBar = (ProgressBar) findViewById(R.id.pBar);
 
+        //Titel der Fragen
+        titleArray = getResources().getStringArray(R.array.allgemGrundTitel);
         //Fragen-Array mit Resourcen aus dem XML füllen
         fragen = getResources().getStringArray(R.array.allgemGrundQuestions);
         //Antworten-Array mit den Ressourcen aus dem XML füllen --> zu beachten ist, dass immer 3 Antworten zu einer Frage gehören: Frage1 --> Antwort Array1-3, Frage 2 --> Antwort Array 4-6, ...
@@ -51,7 +59,7 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
                 layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 Log.d("HEMAapp", "Initialisiert: " + init);
                 //Interface mit richtigen String Werten für Frage und Antworten initialisieren
-                updateForNewQustion(question, pBar, b_a1, b_a2, b_a3);
+                updateForNewQustion(title, image, question, pBar, b_a1, b_a2, b_a3);
                 //Antwortbuttons werden zufällig angeordnet
                 switchButtons(b_a1, b_a2, b_a3);
 
@@ -68,7 +76,7 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("HEMAapp", "Button 1 klicked");             //DEBUG
                 checkAnswer(1);                                    //Betrifft nur den gewählten Button um Antwort zu überpüfen
-                updateForNewQustion(question, pBar, b_a1, b_a2, b_a3);      //Aktualisiert die Antworten aller Buttons und die Frage
+                updateForNewQustion(title, image, question, pBar, b_a1, b_a2, b_a3);      //Aktualisiert die Antworten aller Buttons und die Frage
                 switchButtons(b_a1, b_a2, b_a3);                            //Vertauscht die Buttonpositionen nach zufälliger Ordnung
 
             }
@@ -80,7 +88,7 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("HEMAapp", "Button 2 klicked");
                 checkAnswer(2);
-                updateForNewQustion(question, pBar, b_a1, b_a2, b_a3);
+                updateForNewQustion(title, image, question, pBar, b_a1, b_a2, b_a3);
                 switchButtons(b_a1, b_a2, b_a3);
 
             }
@@ -92,7 +100,7 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("HEMAapp", "Button 3 klicked");
                 checkAnswer(3);
-                updateForNewQustion(question, pBar, b_a1, b_a2, b_a3);
+                updateForNewQustion(title, image, question, pBar, b_a1, b_a2, b_a3);
                 switchButtons(b_a1, b_a2, b_a3);
 
             }
@@ -127,10 +135,12 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
 
     }
 
-    private void updateForNewQustion(TextView questionVar, ProgressBar pBarVar, Button b_answ1, Button b_answ2, Button b_answ3){
+    private void updateForNewQustion(TextView titleVar, ImageView imageVar, TextView questionVar, ProgressBar pBarVar, Button b_answ1, Button b_answ2, Button b_answ3){
 
         if(frageNr != array_rightAnsw.length){
             //Aktualisierung der Fragen und Antworten
+            titleVar.setText(titleArray[frageNr]);
+            imageVar.setImageResource(imageArray[frageNr]);
             questionVar.setText(fragen[frageNr]);               //Aktualisiert die Frage in der TextView
 
             int arrayIndexAnswer_b1 = 0 + (frageNr)*3;        //Berrechnet auf Basis der Button-Nummer-1 (Array beginnt bei 0!) und der Frage-Nummer (Beginnt auch bei 0) den richtigen Indexwert für die Antwort im XML-Array
@@ -146,7 +156,7 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
 
             //Aktualisierung der Fortschrittsvariablen
             if(init == true) {
-                progress = progress + 20;
+                progress = progress + (100/array_rightAnsw.length);
                 pBarVar.setProgress(progress);
                 Log.d("HEMAapp", "FrageNr und Progress erhöht! FrageNr = " + frageNr);
             }else{
@@ -154,7 +164,7 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
                 Log.d("HEMAapp", "init auf true gesetzt. FrageNr = " + frageNr);
             }
         }else {
-            progress = progress + 20;
+            progress = progress + (100/array_rightAnsw.length);
             pBarVar.setProgress(progress);
             allQuestionsAnsweredDialog();
         }

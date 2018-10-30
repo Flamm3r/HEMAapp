@@ -6,12 +6,27 @@
     </string-array>
 
     <!-- Questions: Allgemeine Grundlagen -->
+    <string-array name="allgemGrundTitel">
+        <item>Die Huten</item>
+        <item>Prima Custodia</item>
+        <item>Secunda Custodia</item>
+        <item>Terza Custodia</item>
+        <item>Quarta Custodia</item>
+        <item>Quinta Custodia</item>
+        <item>Sexta Custodia</item>
+        <item>Septima Custodia</item>
+    </string-array>
+
+    <!-- Questions: Allgemeine Grundlagen -->
     <string-array name="allgemGrundQuestions">
-        <item>Welcher Teil der Klinge wird als Stärke bezeichnet?</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat nibh at ligula iaculis rhoncus. Integer consequat quam mi, vel hendrerit est tempor pretium.</item>
         <item>Was versteht man unter fechten aus dem Band bzw. aus der Bindung?</item>
         <item>Was gilt es beim fechten mit einem Waster (Nylon Trainingsschwert) zu bedenken?</item>
         <item>Question4</item>
         <item>Question5</item>
+        <item>Question6</item>
+        <item>Question7</item>
+        <item>Question8</item>
     </string-array>
 
     <!-- Answers: Allgemeine Grundlagen -->
@@ -36,12 +51,28 @@
         <item>Answer_Q5_A1</item>
         <item>Answer_Q5_A2</item>
         <item>Answer_Q5_A3</item>
+        <!-- Frage6 -->
+        <item>Answer_Q6_A1</item>
+        <item>Answer_Q6_A2</item>
+        <item>Answer_Q6_A3</item>
+        <!-- Frage7 -->
+        <item>Answer_Q7_A1</item>
+        <item>Answer_Q7_A2</item>
+        <item>Answer_Q7_A3</item>
+        <!-- Frage8 -->
+        <item>Answer_Q8_A1</item>
+        <item>Answer_Q8_A2</item>
+        <item>Answer_Q8_A3</item>
     </string-array>
 
     <!-- Richtige Antworten für den Alert-Dialog, wenn die falsche ausgewählt wird -->
     <string-array name="AllgemGrund_rightAnswers">
-        <item>Das ist leider nicht richtig... Als Stärke wird die untere Hälfte der Klinge bezeichnet, da man hier durch einen geringeren Hebel mehr Kraft aufnehmen kann.</item>
-        <item>Das ist leider nicht richtig... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat nibh at ligula iaculis rhoncus. Integer consequat quam mi, vel hendrerit est tempor pretium. </item>
+        <item>Das ist leider nicht richtig... </item>
+        <item>Das ist leider nicht richtig... </item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat nibh at ligula iaculis rhoncus. Integer consequat quam mi, vel hendrerit est tempor pretium. </item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat nibh at ligula iaculis rhoncus. Integer consequat quam mi, vel hendrerit est tempor pretium. </item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat nibh at ligula iaculis rhoncus. Integer consequat quam mi, vel hendrerit est tempor pretium. </item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat nibh at ligula iaculis rhoncus. Integer consequat quam mi, vel hendrerit est tempor pretium. </item>
         <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat nibh at ligula iaculis rhoncus. Integer consequat quam mi, vel hendrerit est tempor pretium. </item>
         <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat nibh at ligula iaculis rhoncus. Integer consequat quam mi, vel hendrerit est tempor pretium. </item>
         <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat nibh at ligula iaculis rhoncus. Integer consequat quam mi, vel hendrerit est tempor pretium. </item>
