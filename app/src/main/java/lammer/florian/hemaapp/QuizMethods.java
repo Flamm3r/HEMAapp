@@ -1,145 +1,27 @@
 package lammer.florian.hemaapp;
 
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.media.Image;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
 
-public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
+public class QuizMethods {
 
-    private int progress = 0;   //Tracks the actual Progress in % for the Progressbar
-    private int frageNr = 0;    //Tracks the actual Questionnumber
-    private int punkte = 0;     //Tracks the number of right questions
-    private int[] array_rightAnsw = {1,1,3,2,3,2,1,3}; //Array für die richtigen Antworten --> Wert gibt die richtige Antwort nach Reihenfolge im XML Array pro Frage an
-    private String[] titleArray;     //Array für die Titel der Fragen
-    final private int[] imageArray = {0, R.drawable.guard_1st, R.drawable.guard_2nd, R.drawable.guard_3nd, R.drawable.guard_4th, R.drawable.guard_5th, R.drawable.guard_6th, R.drawable.guard_7th}; //, R.drawable., R.drawable.dice3, R.drawable.dice4, R.drawable.dice5, R.drawable.dice6};   //Array für die Bilder zu den Fragen
-    private String[] fragen;    //Initialisierung eines Arrays für die Fragen aus dem XML
-    private String[] antworten; //Initialisierung eines Array für die Antworten aus dem XML
-    private boolean init = false;
-
-
-    //Objekt mit den Methoden für das Quiz
-    final QuizMethods qM = new QuizMethods();
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.quiz_sb_allgemgrundlagen);
-
-        final TextView title = (TextView) findViewById(R.id.q_title);
-        final ImageView image = (ImageView) findViewById(R.id.q_imageView);
-        final TextView question = (TextView) findViewById(R.id.q_textView);
-        final Button b_a1 = (Button) findViewById(R.id.b_a1);
-        final Button b_a2 = (Button) findViewById(R.id.b_a2);
-        final Button b_a3 = (Button) findViewById(R.id.b_a3);
-        final ProgressBar pBar = (ProgressBar) findViewById(R.id.pBar);
-
-
-        //Titel der Fragen
-        titleArray = getResources().getStringArray(R.array.allgemGrundTitel);
-        //Fragen-Array mit Resourcen aus dem XML füllen
-        fragen = getResources().getStringArray(R.array.allgemGrundQuestions);
-        //Antworten-Array mit den Ressourcen aus dem XML füllen --> zu beachten ist, dass immer 3 Antworten zu einer Frage gehören: Frage1 --> Antwort Array1-3, Frage 2 --> Antwort Array 4-6, ...
-        antworten = getResources().getStringArray(R.array.allgemGrundAnswers);
-
-        //LayoutListener der überprüft ob das Layout fertig erstellt ist, ehe er die Frage im TextView und die Antworten auf den Butten, sowie deren Anordnung festlegt
-        final RelativeLayout layout = (RelativeLayout) findViewById(R.id.LayoutQandA);
-        ViewTreeObserver vto = layout.getViewTreeObserver();
-        vto.addOnGlobalLayoutListener (new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                Log.d("HEMAapp", "Initialisiert: " + init);
-                //Interface mit richtigen String Werten für Frage und Antworten initialisieren
-                updateForNewQustion(title, image, question, pBar, b_a1, b_a2, b_a3);
-                //Antwortbuttons werden zufällig angeordnet
-
-                //Test
-                qM.switchButtons(b_a1, b_a2, b_a3);
-
-                //switchButtons(b_a1, b_a2, b_a3);
-
-                Log.d("HEMAapp", "Länge des Antworten Arrays: " + array_rightAnsw.length);
-                Log.d("HEMAapp", "Initialisiert: " + init);
-            }
-        });
-
-
-
-        //Button Antwort 1
-        b_a1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("HEMAapp", "Button 1 klicked");             //DEBUG
-                checkAnswer(1);                                    //Betrifft nur den gewählten Button um Antwort zu überpüfen
-                updateForNewQustion(title, image, question, pBar, b_a1, b_a2, b_a3);      //Aktualisiert die Antworten aller Buttons und die Frage
-
-                //Test;
-                qM.switchButtons(b_a1, b_a2, b_a3);
-
-                //switchButtons(b_a1, b_a2, b_a3);                            //Vertauscht die Buttonpositionen nach zufälliger Ordnung
-
-            }
-        });
-
-        //Button Antwort 2
-        b_a2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("HEMAapp", "Button 2 klicked");
-                checkAnswer(2);
-                updateForNewQustion(title, image, question, pBar, b_a1, b_a2, b_a3);
-
-                //Test
-                qM.switchButtons(b_a1, b_a2, b_a3);
-
-                //switchButtons(b_a1, b_a2, b_a3);
-
-            }
-        });
-
-        //Button Antwort 3
-        b_a3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("HEMAapp", "Button 3 klicked");
-                checkAnswer(3);
-                updateForNewQustion(title, image, question, pBar, b_a1, b_a2, b_a3);
-
-                //Test
-                qM.switchButtons(b_a1, b_a2, b_a3);
-
-                //switchButtons(b_a1, b_a2, b_a3);
-
-            }
-        });
-
-
-
-
-    }
-
-
+    /*
 
     //################
     //### Methoden ###
     //################
 
     //Methode überprüft ob der Button der richtigen Antwort entspricht und tracked den Fortschritt
-    private void checkAnswer(int ButtonNr) {
+    public void checkAnswer(int ButtonNr) {
         //TODO: Index für 5. Frage iwie anpassen, dass die app nicht abstürzt
 
         if (frageNr < array_rightAnsw.length){     //Sonst wird bei der letzten Frage eine ArrayIndexOutOfBoundsException geschmissen
@@ -148,8 +30,7 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), R.string.ToastRightAnswer, Toast.LENGTH_SHORT).show();
                 punkte = punkte + 1;
             }else {
-                qM.wrongAnswerDialog(frageNr, this);
-                //wrongAnswerDialog(frageNr);
+                wrongAnswerDialog(frageNr);
                 Toast.makeText(getApplicationContext(), R.string.ToastWrongAnswer, Toast.LENGTH_SHORT).show();
             }
         }
@@ -159,7 +40,7 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
 
     }
 
-    private void updateForNewQustion(TextView titleVar, ImageView imageVar, TextView questionVar, ProgressBar pBarVar, Button b_answ1, Button b_answ2, Button b_answ3){
+    public void updateForNewQustion(TextView titleVar, ImageView imageVar, TextView questionVar, ProgressBar pBarVar, Button b_answ1, Button b_answ2, Button b_answ3){
 
         if(frageNr != array_rightAnsw.length){
             //Aktualisierung der Fragen und Antworten
@@ -194,10 +75,10 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
         }
 
     }
+    */
 
-    /*
 
-    private void switchButtons(Button b_answ1, Button b_answ2, Button b_answ3){
+    public void switchButtons(Button b_answ1, Button b_answ2, Button b_answ3){
         //Aktuelle Postion von Button 1
         float b_a1_posX = b_answ1.getX();
         float b_a1_posY = b_answ1.getY();
@@ -261,14 +142,13 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
 
     }
 
-    */
 
-    /*
+
     //Erstellt einen Alert Dialog, wenn die falsche Antwort ausgewählt wird --> Aufruf in der checkAnswer() Methode
-    private void wrongAnswerDialog(int questionNr){
-        String[] rightAnswers = getResources().getStringArray(R.array.AllgemGrund_rightAnswers);
+    public void wrongAnswerDialog(int questionNr, Context context){
+        String[] rightAnswers = context.getResources().getStringArray(R.array.AllgemGrund_rightAnswers);
 
-        AlertDialog alertDialog = new AlertDialog.Builder(this)
+        AlertDialog alertDialog = new AlertDialog.Builder(context)
                 .setTitle(R.string.AlertDialogWrongAnswerTitle)
                 .setMessage(rightAnswers[questionNr])
                 .setPositiveButton(R.string.AlertDialogButton, new DialogInterface.OnClickListener() {
@@ -278,11 +158,12 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
                     }
                 }).show();
     }
-    */
+
+    /*
 
     //TODO String Resourcen extrahieren
     //Erstellt einen AlertDialog der zu Quizoverview führt, wenn alle Fragen beantwortet wurden
-    private void allQuestionsAnsweredDialog(){
+    public void allQuestionsAnsweredDialog(){
         if (frageNr == array_rightAnsw.length) {
 
             AlertDialog alertDialog = new AlertDialog.Builder(this)
@@ -298,7 +179,6 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
                     }).show();
         }
     }
-
-
+    */
 
 }

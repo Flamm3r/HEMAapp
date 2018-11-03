@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RatingBar;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -33,7 +34,6 @@ public class QuizOverview extends AppCompatActivity {
         Button b_Huten = (Button) findViewById(R.id.b_GrundlagenAllgemein);
         Button b_spezilleGrundlagen = (Button) findViewById(R.id.b_GrundlagenSpeziell);
         Button b_fortgeschritteneTechnik = (Button) findViewById(R.id.b_TechnikFortgeschritten);
-
 
         //Quiz Button
         b_allgemeineGrundlagen.setOnClickListener(new View.OnClickListener() {
