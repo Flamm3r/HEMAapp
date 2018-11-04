@@ -14,31 +14,32 @@ import java.util.Random;
 
 public class QuizMethods {
 
-    /*
+
 
     //################
     //### Methoden ###
     //################
 
     //Methode überprüft ob der Button der richtigen Antwort entspricht und tracked den Fortschritt
-    public void checkAnswer(int ButtonNr) {
-        //TODO: Index für 5. Frage iwie anpassen, dass die app nicht abstürzt
+    public int checkAnswer(int ButtonNr, int frageNr, int[] array_rightAnsw, int punkte, Context context ) {
 
         if (frageNr < array_rightAnsw.length){     //Sonst wird bei der letzten Frage eine ArrayIndexOutOfBoundsException geschmissen
             //Toastmessage, je nachdem ob richtig oder falsch
             if (array_rightAnsw[frageNr] == ButtonNr){
-                Toast.makeText(getApplicationContext(), R.string.ToastRightAnswer, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.ToastRightAnswer, Toast.LENGTH_SHORT).show();
                 punkte = punkte + 1;
+                return punkte;
             }else {
-                wrongAnswerDialog(frageNr);
-                Toast.makeText(getApplicationContext(), R.string.ToastWrongAnswer, Toast.LENGTH_SHORT).show();
+                //wrongAnswerDialog(frageNr); //TODO
+                Toast.makeText(context, R.string.ToastWrongAnswer, Toast.LENGTH_SHORT).show();
+                return punkte;
             }
         }
 
-
-
-
+        return punkte;
     }
+
+    /*
 
     public void updateForNewQustion(TextView titleVar, ImageView imageVar, TextView questionVar, ProgressBar pBarVar, Button b_answ1, Button b_answ2, Button b_answ3){
 

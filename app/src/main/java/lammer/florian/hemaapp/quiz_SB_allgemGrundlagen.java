@@ -84,7 +84,8 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("HEMAapp", "Button 1 klicked");             //DEBUG
-                checkAnswer(1);                                    //Betrifft nur den gewählten Button um Antwort zu überpüfen
+                //checkAnswer(1);                                    //Betrifft nur den gewählten Button um Antwort zu überpüfen
+                punkte = qM.checkAnswer(1, frageNr, array_rightAnsw, punkte, getApplicationContext());
                 updateForNewQustion(title, image, question, pBar, b_a1, b_a2, b_a3);      //Aktualisiert die Antworten aller Buttons und die Frage
 
                 //Test;
@@ -100,7 +101,8 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("HEMAapp", "Button 2 klicked");
-                checkAnswer(2);
+                //checkAnswer(2);
+                punkte = qM.checkAnswer(2, frageNr, array_rightAnsw, punkte, getApplicationContext());
                 updateForNewQustion(title, image, question, pBar, b_a1, b_a2, b_a3);
 
                 //Test
@@ -116,7 +118,8 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("HEMAapp", "Button 3 klicked");
-                checkAnswer(3);
+                //checkAnswer(3);
+                punkte = qM.checkAnswer(3, frageNr, array_rightAnsw, punkte, getApplicationContext());
                 updateForNewQustion(title, image, question, pBar, b_a1, b_a2, b_a3);
 
                 //Test
@@ -139,6 +142,7 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
     //################
 
     //Methode überprüft ob der Button der richtigen Antwort entspricht und tracked den Fortschritt
+    /*
     private void checkAnswer(int ButtonNr) {
         //TODO: Index für 5. Frage iwie anpassen, dass die app nicht abstürzt
 
@@ -154,10 +158,8 @@ public class quiz_SB_allgemGrundlagen extends AppCompatActivity {
             }
         }
 
-
-
-
     }
+    */
 
     private void updateForNewQustion(TextView titleVar, ImageView imageVar, TextView questionVar, ProgressBar pBarVar, Button b_answ1, Button b_answ2, Button b_answ3){
 
